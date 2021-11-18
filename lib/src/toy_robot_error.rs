@@ -30,7 +30,7 @@ impl From<FmtError> for ToyRobotError {
 impl Display for ToyRobotError {
     fn fmt(&self, fmt: &mut Formatter) -> Result<(), FmtError> {
         match self {
-            ToyRobotError::FormatError(f) => Ok(()),
+            ToyRobotError::FormatError(_) => Ok(()),
             ToyRobotError::InvalidRobot(e) => write!(fmt, "Invalid robot: {}", e),
             ToyRobotError::InvalidCommand(e) => write!(fmt, "Invalid command: {}", e),
             ToyRobotError::InvalidDirection(e) => write!(fmt, "Invalid direction: {}", e),

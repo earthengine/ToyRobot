@@ -27,7 +27,7 @@ impl FromStr for Position {
 
 impl Position {
     pub const fn pattern_str() -> &'static str {
-        r#"(?P<x>\d)\s*,\s*(?P<y>\d)"#
+        r#"(?P<x>([1-9]\d*|0))\s*,\s*(?P<y>([1-9]\d*|0))"#
     }
 
     pub(crate) fn new(x: i8, y: i8) -> Result<Self, ToyRobotError> {

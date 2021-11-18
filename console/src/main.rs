@@ -1,9 +1,6 @@
 use rustyline::Editor;
-use toy_robot::ToyRobotError;
 
-fn main() {
-    let mut rl = Editor::<()>::new();
-    let mut robot = toy_robot::ToyRobot::default();
+fn print_introduction() {
     println!(
         r#"
 Welcome to our toy robot console.
@@ -25,10 +22,22 @@ Use <ctrl-c> to exit.
 - REPORT will print the current location of the robot and its direction
         "#
     );
+}
+
+fn main() {
+    print_introduction();
+
+    let mut rl = Editor::<()>::new();
+    let mut robot = toy_robot::ToyRobot::default();
+
     while let Ok(line) = rl.readline("ToyRobot >") {
         match toy_robot::execute_command(&mut robot, &line) {
-            Ok(result) => {
-                println!("{}", result);
+            // TODO: the specification does not show any command feedback unless it is a report command.
+            // Maybe this should be adjustable.
+            Ok(_result) => {
+                if line == "REPORT" {
+                    println!("{}", robot);
+                }
             }
             Err(e) => println!("{}", e),
         }

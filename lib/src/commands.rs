@@ -14,7 +14,7 @@ enum Command {
 
 fn commands() -> Regex {
     Regex::new(concat!(
-        r#"\s*(?P<place>PLACE\s+(?P<x>\d)\s*,\s*(?P<y>\d)\s*(,\s*(?P<direction>EAST|SOUTH|WEST|NORTH))?)\s*|"#,
+        r#"\s*(?P<place>PLACE\s+(?P<x>[0-5])\s*,\s*(?P<y>[0-5])\s*(,\s*(?P<direction>EAST|SOUTH|WEST|NORTH))?)\s*|"#,
         r#"\s*(?P<move>MOVE)\s*|"#,
         r#"\s*(?P<left>LEFT)\s*|"#,
         r#"\s*(?P<right>RIGHT)\s*|"#,

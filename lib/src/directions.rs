@@ -36,10 +36,6 @@ impl FromStr for Direction {
 }
 
 impl Direction {
-    pub const fn pattern_str() -> &'static str {
-        "EAST|SOUTH|WEST|NORTH"
-    }
-
     pub fn turn_left(&self) -> Direction {
         match self {
             Direction::East => Direction::North,
